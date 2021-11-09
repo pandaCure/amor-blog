@@ -1,0 +1,30 @@
+name: ZhongYao Blog Deploy
+on: 
+  push: 
+    branches: [main]
+jobs:
+  Deploy-Web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout main branch
+      uses: actions/checkout@main
+
+      - name: use node version
+      uses: actions/setup-node@v2.4.1
+      with: 
+        node-version: '16.11.0'
+
+      - name: install npm
+      run: |
+        pnpm install
+        npm run build  
+
+      - name: ssh deploy
+      uses: easingthemes/ssh-deploy@v2.2.11
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}  
+        ARGS: "-avzr --delete"
+        SOURCE: "dist"
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}    
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}    
+        TARGET: "/opt/webwiki/docs"
