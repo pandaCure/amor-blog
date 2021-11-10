@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="home">
       <header className="home-header">钟繇blog</header>
-      <main>body</main>
+      <main>body1</main>
       <footer className="home-footer">
         <a href="https://beian.miit.gov.cn/" target="_blank">
           辽ICP备17009955号
