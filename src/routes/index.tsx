@@ -3,11 +3,11 @@ import App from "../App";
 import Home from "../pages/home/Home";
 const router = [
   {
-    // element: <App />,
+    element: <App />,
     path: "/",
     children: [
       {
-        index: true,
+        path: "/home",
         element: <Home />,
       },
     ],

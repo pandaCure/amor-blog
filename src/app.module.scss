@@ -1,0 +1,29 @@
+html,body {
+  height: 100vh;
+  width: 100vw;
+}
+.header {
+  height:80px;
+}
+.body {
+  min-height: calc(100vh - 80px);
+  margin-bottom: -80px;
+}
+.body::after {
+  display: block;
+  content: "";
+  height: 80px;
+}
+.footer {
+  height:80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: blue;
+  }
+}
